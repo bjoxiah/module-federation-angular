@@ -3,13 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:shell": "ng serve shell  -o --port 4200",
+    "start:remote-app": "ng serve remote-app -o --port 5000",
+    "start:all": "concurrently \"npm run start:shell\" \"npm run start:remote-app\" ",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^14.3.8",
+    "@angular-architects/module-federation-tools": "^14.3.8",
     "@angular/animations": "^14.0.0",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
@@ -20,6 +25,8 @@
     "@angular/router": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "webpack": "^5.73.0",
+    "webpack-dev-server": "^4.9.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -27,12 +34,15 @@
     "@angular/cli": "~14.0.2",
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
+    "concurrently": "^7.2.2",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^14.0.2",
+    "ngx-build-plus": "^14.0.0",
     "typescript": "~4.7.2"
   }
 }
